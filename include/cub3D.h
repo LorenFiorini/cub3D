@@ -45,7 +45,7 @@ typedef struct s_game
 	uint32_t		floor_color;
 	uint32_t		ceiling_color;
 	t_player		player;
-	
+	t_render		render;
 }	t_game;
 
 /* ************************************************************************** */

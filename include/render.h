@@ -91,11 +91,12 @@ void		render_raycast(t_game *game, t_ray *ray);
 
 /* ray.c */
 void		init_ray(t_render *render);
-void		update_render(t_render *render);
 void		print_ray(t_ray *ray);
 
 /* render.c */
-t_render	init_render(t_game *game);
+// t_render	init_render(t_game *game);
+void		init_render(t_game *game);
+void		update_render(t_render *render);
 void		print_render(t_render *render);
 
 /* utils.c */
