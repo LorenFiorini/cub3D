@@ -15,6 +15,7 @@ void	rotate_player(t_game *game, t_player_action action)
 	else if (new_orientation >= 2 * M_PI)
 		new_orientation -= 2 * M_PI;
 	game->player.orientation = new_orientation;
+	generate_render(game);
 }
 
 /* To be implemented later
