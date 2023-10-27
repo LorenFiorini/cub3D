@@ -66,7 +66,6 @@ typedef struct s_ray
  * @param ray_index Index of the current ray
  * @param theta Angle of the current ray
  * @param delta Angle between two rays
- * @param img_pixel Pixel of the IMAGE
  * @param distance Distance between the player and the Projection Plane
  * @param pov Point of View of the player
  * 
@@ -80,7 +79,6 @@ typedef struct s_render
 	size_t		ray_index;
 	double		theta;
 	double		delta;
-	t_pixel		img_pixel;
 	int64_t		distance;
 	t_vector	pov;
 }	t_render;
@@ -98,21 +96,23 @@ void		generate_render(t_game *game);
 /* intersection.c */
 void		find_ray_intersection(t_game *game, t_ray *ray);
 
-/* ray_casting.c */
-void		render_raycast(t_game *game, t_render *render, t_ray *ray);
+/* ray_cast.c */
+void		render_raycast(t_game *game, t_ray *ray);
 
 /* ray.c */
 void		init_ray(t_render *render);
-void		update_render(t_render *render);
 void		print_ray(t_ray *ray);
 
 /* render.c */
-t_render	init_render(t_game *game);
+// t_render	init_render(t_game *game);
+void		init_render(t_game *game);
+void		update_render(t_render *render);
 void		print_render(t_render *render);
 
 /* utils.c */
 int64_t		get_distance_between(t_vector vector, t_vector origin);
 bool		is_wall(t_game *game, t_vector vector);
+t_vector	vector_difference(t_vector a, t_vector b);
 
 
 

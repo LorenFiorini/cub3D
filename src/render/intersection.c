@@ -51,7 +51,7 @@ bool	update_horizontal(t_game *game, t_ray *ray)
 	ray->hor_length = get_distance_between(ray->hor_inter, ray->origin);
 	if (!is_wall(game, ray->hor_inter))
 		return (false);
-	ray->hit = copy_vector(ray->hor_inter);
+	ray->hit = vector_difference(ray->hor_inter, ray->origin);
 	ray->length = ray->hor_length;
 	if (ray->angle < M_PI)
 		ray->texture = game->so_texture;
@@ -64,17 +64,25 @@ bool	update_vertical(t_game *game, t_ray *ray)
 {
 	ray->ver_inter = vector_sum(ray->ver_inter, ray->d_ver);
 	ray->ver_length = get_distance_between(ray->ver_inter, ray->origin);
-	if (!is_wall(game, ray->ver_inter))
-		return (false);
-	ray->hit = copy_vector(ray->ver_inter);
-	ray->length = ray->ver_length;
-	if (ray->angle < M_PI_2 || ray->angle > 3 * M_PI_2)
-		ray->texture = game->ea_texture;
-	else
-		ray->texture = game->we_texture;
-	return (true);
+	if (is_wall(game, ray->ver_inter))
+	{
+		ray->hit = vector_difference(ray->ver_inter, ray->origin);
+		ray->length = ray->ver_length;
+		if (ray->angle < M_PI_2 || ray->angle > 3 * M_PI_2)
+			ray->texture = game->ea_texture;
+		else
+			ray->texture = game->we_texture;
+		return (true);
+	}
+	return (false);
 }
 
+/**
+ * @brief Find the ray intersection.
+ * 
+ * @param game 
+ * @param ray 
+ */
 void	find_ray_intersection(t_game *game, t_ray *ray)
 {
 	bool	wall_inter_found;
