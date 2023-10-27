@@ -52,3 +52,20 @@ void	print_map(t_map *map)
 		i++;
 	}
 }
+
+void	print_map_cartesian(t_map *map)
+{
+	size_t	i;
+
+	printf("Map (height: %zu, max_width: %zu)\n", map->height, map->max_width);
+	i = map->height - 1;
+	while (i >= 0)
+	{
+		printf("%*zu|%-*s", (int)log10(map->height) + 1, i,
+			(int)map->max_width, map->map[i]);
+		if (map->widths)
+			printf("|w%zu", map->widths[i]);
+		printf("\n");
+		i--;
+	}
+}

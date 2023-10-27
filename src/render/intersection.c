@@ -1,4 +1,4 @@
-#include "../../include/render.h"
+#include "../../include/cub3D.h"
 
 /**
  * @brief Find the coordinates of the first intersections of the ray.
@@ -64,17 +64,15 @@ bool	update_vertical(t_game *game, t_ray *ray)
 {
 	ray->ver_inter = vector_sum(ray->ver_inter, ray->d_ver);
 	ray->ver_length = get_distance_between(ray->ver_inter, ray->origin);
-	if (is_wall(game, ray->ver_inter))
-	{
-		ray->hit = vector_difference(ray->ver_inter, ray->origin);
-		ray->length = ray->ver_length;
-		if (ray->angle < M_PI_2 || ray->angle > 3 * M_PI_2)
-			ray->texture = game->ea_texture;
-		else
-			ray->texture = game->we_texture;
-		return (true);
-	}
-	return (false);
+	if (!is_wall(game, ray->ver_inter))
+		return (false);
+	ray->hit = vector_difference(ray->ver_inter, ray->origin);
+	ray->length = ray->ver_length;
+	if (ray->angle < M_PI_2 || ray->angle > 3 * M_PI_2)
+		ray->texture = game->ea_texture;
+	else
+		ray->texture = game->we_texture;
+	return (true);
 }
 
 /**

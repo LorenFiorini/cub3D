@@ -116,6 +116,8 @@ void		init_map(t_map *map);
 void		free_map(t_map *map);
 bool		calc_widths(t_map *map);
 void		print_map(t_map *map);
+void		print_map_cartesian(t_map *map);
+
 
 /* pixel.c */
 uint32_t	get_color(uint32_t r, uint32_t g, uint32_t b, uint32_t a);
