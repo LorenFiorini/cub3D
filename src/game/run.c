@@ -13,6 +13,9 @@ void	run_game(t_game *game)
 	if (mlx_image_to_window(game->mlx, game->image, 0, 0))
 		ft_perror(CUB_MLXFAIL, "Failed to create window");
 	generate_render(game);
+	print_render(&game->render);						// DEBUG
+	print_ray(&game->render.rays[0]);					// DEBUG
+	print_ray(&game->render.rays[WINDOW_WIDTH - 1]);	// DEBUG
 	mlx_loop_hook(game->mlx, hook, game);
 	// mlx_mouse_hook(game->mlx, mouse_hook, game);  // To-do: mouse_hook (bonus)
 	mlx_loop(game->mlx);

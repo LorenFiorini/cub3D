@@ -102,6 +102,7 @@ void		print_render(t_render *render);
 /* utils.c */
 int64_t		get_distance_between(t_vector vector, t_vector origin);
 bool		is_wall(t_game *game, t_vector vector);
+t_vector	vector_difference(t_vector a, t_vector b);
 
 
 

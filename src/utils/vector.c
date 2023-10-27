@@ -85,12 +85,12 @@ t_vector	vector_sum(t_vector v1, t_vector v2)
 void	print_vector(t_vector *vector, char *name, bool with_map_coords)
 {
 	if (name)
-		printf("\n%s:\t", name);
+		printf("%s:\t", name);
 	else
-		printf("\n(x, y, z) =\t");
+		printf("(x, y, z) =\t");
 	printf(" (%lld, %lld, %lld)", vector->x, vector->y, vector->z);
 	if (with_map_coords)
-		printf(" -> (%lld, %lld, %lld)",
+		printf("\t->\t(%lld, %lld, %lld)",
 			vector->x / TILE_SIZE, vector->y / TILE_SIZE, vector->z / TILE_SIZE);
 	printf("\n");
 }

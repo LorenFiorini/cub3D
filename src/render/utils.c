@@ -37,3 +37,13 @@ bool	is_wall(t_game *game, t_vector vector)
 		return (true);
 	return (game->map.map[y][x] == '1' || game->map.map[y][x] == ' ');
 }
+
+t_vector	vector_difference(t_vector a, t_vector b)
+{
+	t_vector	diff;
+
+	diff.x = a.x - b.x;
+	diff.y = a.y - b.y;
+	diff.z = a.z - b.z;
+	return (diff);
+}
